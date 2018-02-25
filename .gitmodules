@@ -1,0 +1,3 @@
+[submodule "qbe"]
+	path = qbe
+	url = https://compilers.ispras.ru/git/qbe.git

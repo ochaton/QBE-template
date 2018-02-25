@@ -1,0 +1,6 @@
+build/
+bin/
+include/
+obj/
+*.o
+directories
