@@ -1,43 +1,43 @@
 @l0
-        def = %n %nv %c %cmax %mem 
-        use = 
+	def = %n %nv %c %cmax %mem 
+	use = 
 @l1
-        def = %t5 %t4 
-        use = %nv 
+	def = %t5 %t4 
+	use = %nv 
 @l2
-        def = %t8 
-        use = %nv %n %c 
+	def = %t8 
+	use = %nv %n %c 
 @l4
-        def = %t12 %t11 
-        use = %n 
+	def = %t12 %t11 
+	use = %n 
 @l5
-        def = %t15 %t16 %t14 
-        use = %n %nv 
+	def = %t15 %t16 %t14 
+	use = %n %nv 
 @l7
-        def = %t19 %t22 %t23 %t24 %t25 %t21 %t20 %t18 
-        use = %c %mem %n 
+	def = %t19 %t22 %t23 %t24 %t25 %t21 %t20 %t18 
+	use = %c %mem %n 
 @l8
-        def = %t27 %t26 
-        use = %n 
+	def = %t27 %t26 
+	use = %n 
 @l10
-        def = %t33 %t31 %t30 
-        use = %n 
+	def = %t33 %t31 %t30 
+	use = %n 
 @l11
-        def = %t37 %t36 
-        use = %n 
+	def = %t37 %t36 
+	use = %n 
 @l12
-        def = %t40 %t39 
-        use = %c 
+	def = %t40 %t39 
+	use = %c 
 @l6
-        def = %t42 %t44 %t45 %t46 %t47 %t43 %t49 %t50 %t48 
-        use = %c %mem %nv %cmax 
+	def = %t42 %t44 %t45 %t46 %t47 %t43 %t49 %t50 %t48 
+	use = %c %mem %nv %cmax 
 @l13
-        def = %t52 
-        use = %c %cmax 
+	def = %t52 
+	use = %c %cmax 
 @l14
-        def = %t54 %t53 
-        use = %nv 
+	def = %t54 %t53 
+	use = %nv 
 @l3
-        def = %t57 %t55 
-        use = %cmax 
+	def = %t57 %t55 
+	use = %cmax 
 

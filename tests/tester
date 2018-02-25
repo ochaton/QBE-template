@@ -32,7 +32,7 @@ for my $testname (keys %tests) {
 }
 
 say sprintf "%s tests found", scalar keys %tests;
-plan(tests => 2 * scalar keys %tests);
+# plan(tests => 2 * scalar keys %tests);
 
 my $binary = $ARGV[1] or die "Binary file was expected";
 
@@ -45,20 +45,30 @@ sub testit {
 	my $status = system("$binary < $dirname/$name.input > $output");
 	
 	my $stdout = do { local $/; open my $f, '<', "$output" or die "Error while openning output: $! $@"; <$f> };
-	unlink $output;
-
-	$status, $stdout;
+	$status, $stdout, $output;
 }
 
 sub diffit {
-	my ($got, $expected, $test) = @_;
+	my (%args) = @_;
 
 	sub canonicalize {
 		$_[0] =~ s/^\s*//gsi;
 		$_[0] =~ s/\s*$//gsi;
+		$_[0] =~ s/\s{2,}/	/gsi;
+		$_[0] =~ s/\t+/\t/gsi;
 		return "\n".$_[0];
 	}
-	is (canonicalize($got), canonicalize $expected, $test);
+	my $cg = canonicalize $args{got};
+	my $ce = canonicalize $args{expected};
+	if ($cg ne $ce) {
+		my $diff_file = $$.$args{testname}.'.diff';
+		system sprintf "diff -c5 %s %s > %s", $args{stdout}, $args{expected_file}, $diff_file;
+		diag(sprintf "!!!!!! Look at %s !!!!!!!!", $diff_file);
+		fail($args{testname});
+	} else {
+		unlink $args{stdout};
+		ok($args{testname});
+	}
 }
 
 use Test::Most;
@@ -66,9 +76,15 @@ bail_on_fail;
 
 for my $testname (sort keys %tests) {
 	subtest $testname => sub {
-		my ($status, $stdout) = testit $testname, $tests{$testname};
+		my ($status, $stdout, $output) = testit $testname, $tests{$testname};
 		is ($status, 0, "Exited normally");
-		diffit ($stdout, $tests{$testname}{output});
+		diffit(
+			stdout   => $output,
+			expected => $tests{$testname}{output},
+			testname => $testname,
+			got      => $stdout,
+			expected_file => $dirname .'/'. $testname . '.output'
+		);
 	};
 }
 

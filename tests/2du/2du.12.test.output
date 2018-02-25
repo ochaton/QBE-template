@@ -1,22 +1,22 @@
 @l0
-        def = %x %y %b 
-        use = 
+	def = %x %y %b 
+	use = 
 @l1
-        def = %t3 %t2 
-        use = %y 
+	def = %t3 %t2 
+	use = %y 
 @l2
-        def = 
-        use = %x 
+	def = 
+	use = %x 
 @l4
-        def = %t8 %t7 
-        use = %x 
+	def = %t8 %t7 
+	use = %x 
 @l5
-        def = %t16 %t17 %t18 %t19 %t15 %t14 %t20 %t21 %t22 %t13 %t12 %t10 %t24 %t23 
-        use = %b %x %y 
+	def = %t16 %t17 %t18 %t19 %t15 %t14 %t20 %t21 %t22 %t13 %t12 %t10 %t24 %t23 
+	use = %b %x %y 
 @l6
-        def = %t25 %t28 %t27 
-        use = %y 
+	def = %t25 %t28 %t27 
+	use = %y 
 @l3
-        def = %t29 
-        use = 
+	def = %t29 
+	use = 
 

@@ -1,25 +1,25 @@
 @l0
-        def = %t0 %t1 %t2 %t3 %y %Q %t %N %x %t5 %t6 %t4 
-        use = 
+	def = %t0 %t1 %t2 %t3 %y %Q %t %N %x %t5 %t6 %t4 
+	use = 
 @l1
-        def = %t7 %t9 %t8 
-        use = %N 
+	def = %t7 %t9 %t8 
+	use = %N 
 @l2
-        def = 
-        use = %x 
+	def = 
+	use = %x 
 @l4
-        def = %t14 %t15 %t13 
-        use = %x %Q 
+	def = %t14 %t15 %t13 
+	use = %x %Q 
 @l5
-        def = %t18 %t19 %t17 %t16 
-        use = %x %y 
+	def = %t18 %t19 %t17 %t16 
+	use = %x %y 
 @l7
-        def = %t25 %t26 %t27 %t28 %t24 %t23 %t29 %t30 %t31 %t22 %t32 %t21 %t35 %t34 %t33 %t41 %t42 %t43 %t44 %t40 %t39 %t45 %t46 %t47 %t38 %t48 %t37 
-        use = %t %x %y 
+	def = %t25 %t26 %t27 %t28 %t24 %t23 %t29 %t30 %t31 %t22 %t32 %t21 %t35 %t34 %t33 %t41 %t42 %t43 %t44 %t40 %t39 %t45 %t46 %t47 %t38 %t48 %t37 
+	use = %t %x %y 
 @l8
-        def = %t50 %t49 
-        use = %x 
+	def = %t50 %t49 
+	use = %x 
 @l6
-        def = 
-        use = 
+	def = 
+	use = 
 

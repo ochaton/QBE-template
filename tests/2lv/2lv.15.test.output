@@ -1,9 +1,9 @@
 @l0
-        lv_out = %i %b 
+	lv_out = %i %b 
 @l1
-        lv_out = %b %i 
+	lv_out = %b %i 
 @l2
-        lv_out = %i %b 
+	lv_out = %i %b 
 @l3
-        lv_out = 
+	lv_out = 
 

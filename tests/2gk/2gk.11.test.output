@@ -1,46 +1,46 @@
 @l0
-        gen = @l0%i @l0%a @l0%b @l0%c @l0%d 
-        kill = 
+	gen = @l0%i @l0%a @l0%b @l0%c @l0%d 
+	kill = 
 @l1
-        gen = @l1%t3 @l1%t2 
-        kill = 
+	gen = @l1%t3 @l1%t2 
+	kill = 
 @l2
-        gen = @l2%t7 @l2%t6 
-        kill = 
+	gen = @l2%t7 @l2%t6 
+	kill = 
 @l4
-        gen = @l4%t10 @l4%t9 
-        kill = 
+	gen = @l4%t10 @l4%t9 
+	kill = 
 @l5
-        gen = @l5%t15 @l5%t16 @l5%t14 @l5%t18 @l5%t19 @l5%t17 @l5%t13 
-        kill = 
+	gen = @l5%t15 @l5%t16 @l5%t14 @l5%t18 @l5%t19 @l5%t17 @l5%t13 
+	kill = 
 @l7
-        gen = @l7%t23 @l7%t22 
-        kill = 
+	gen = @l7%t23 @l7%t22 
+	kill = 
 @l8
-        gen = @l8%t27 @l8%t28 @l8%t26 @l8%t29 @l8%t25 
-        kill = 
+	gen = @l8%t27 @l8%t28 @l8%t26 @l8%t29 @l8%t25 
+	kill = 
 @l10
-        gen = @l10%t31 @l10%t33 @l10%t34 @l10%t32 
-        kill = 
+	gen = @l10%t31 @l10%t33 @l10%t34 @l10%t32 
+	kill = 
 @l16
-        gen = @l16%t38 @l16%t39 @l16%t37 @l16%t40 @l16%t36 @l16%t35 
-        kill = 
+	gen = @l16%t38 @l16%t39 @l16%t37 @l16%t40 @l16%t36 @l16%t35 
+	kill = 
 @l13
-        gen = @l13%t46 @l13%t47 @l13%t45 @l13%t48 @l13%t44 @l13%t42 
-        kill = 
+	gen = @l13%t46 @l13%t47 @l13%t45 @l13%t48 @l13%t44 @l13%t42 
+	kill = 
 @l14
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l11
-        gen = @l11%t51 @l11%t50 
-        kill = 
+	gen = @l11%t51 @l11%t50 
+	kill = 
 @l9
-        gen = @l9%t53 @l9%t52 
-        kill = 
+	gen = @l9%t53 @l9%t52 
+	kill = 
 @l6
-        gen = @l6%t55 @l6%t54 
-        kill = 
+	gen = @l6%t55 @l6%t54 
+	kill = 
 @l3
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 

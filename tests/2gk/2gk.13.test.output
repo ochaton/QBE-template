@@ -1,19 +1,19 @@
 @l0
-        gen = @l0%t0 @l0%t1 @l0%x @l0%y @l0%b @l0%t3 @l0%t2 
-        kill = 
+	gen = @l0%t0 @l0%t1 @l0%x @l0%y @l0%b @l0%t3 @l0%t2 
+	kill = 
 @l6
-        gen = @l6%t7 @l6%t5 
-        kill = 
+	gen = @l6%t7 @l6%t5 
+	kill = 
 @l5
-        gen = @l5%t9 @l5%t8 
-        kill = 
+	gen = @l5%t9 @l5%t8 
+	kill = 
 @l4
-        gen = @l4%t13 @l4%t11 
-        kill = 
+	gen = @l4%t13 @l4%t11 
+	kill = 
 @l1
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l2
-        gen = @l2%t20 @l2%t21 @l2%t22 @l2%t23 @l2%t19 @l2%t18 @l2%t24 @l2%t25 @l2%t26 @l2%t17 @l2%t16 @l2%t15 
-        kill = 
+	gen = @l2%t20 @l2%t21 @l2%t22 @l2%t23 @l2%t19 @l2%t18 @l2%t24 @l2%t25 @l2%t26 @l2%t17 @l2%t16 @l2%t15 
+	kill = 
 

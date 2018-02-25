@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS+=-std=c11 -Werror -O2
+CFLAGS+=-std=c11 -Wall -ggdb
 
 # Put here path to qbe-root
 QBEROOT=qbe

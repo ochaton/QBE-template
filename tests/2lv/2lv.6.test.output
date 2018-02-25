@@ -1,21 +1,21 @@
 @l0
-        lv_out = %y %Q %x %t 
+	lv_out = %y %Q %x %t 
 @l1
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l2
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l4
-        lv_out = %t %x %y %Q 
+	lv_out = %t %x %y %Q 
 @l5
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l7
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l8
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l9
-        lv_out = %x %Q %t %y 
+	lv_out = %x %Q %t %y 
 @l6
-        lv_out = %y %Q %x %t 
+	lv_out = %y %Q %x %t 
 @l3
-        lv_out = 
+	lv_out = 
 

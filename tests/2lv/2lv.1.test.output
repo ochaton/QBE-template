@@ -1,7 +1,7 @@
 @start
-        lv_out = %x 
+	lv_out = %x 
 @loop
-        lv_out = %x 
+	lv_out = %x 
 @end
-        lv_out = 
+	lv_out = 
 

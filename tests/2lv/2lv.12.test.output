@@ -1,15 +1,15 @@
 @l0
-        lv_out = %y %x %b 
+	lv_out = %y %x %b 
 @l1
-        lv_out = %x %b %y 
+	lv_out = %x %b %y 
 @l2
-        lv_out = %x %b %y 
+	lv_out = %x %b %y 
 @l4
-        lv_out = %b %x %y 
+	lv_out = %b %x %y 
 @l5
-        lv_out = %x %b %y 
+	lv_out = %x %b %y 
 @l6
-        lv_out = %y %x %b 
+	lv_out = %y %x %b 
 @l3
-        lv_out = 
+	lv_out = 
 

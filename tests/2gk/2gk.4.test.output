@@ -1,52 +1,52 @@
 @l0
-        gen = @l0%c @l0%n @l0%x @l0%y @l0%e @l0%ie @l0%col @l0%W @l0%H @l0%rnd @l0%win @l0%t4 @l0%t11 @l0%t12 @l0%t7 @l0%t16 @l0%t17 @l0%t15 @l0%t22 
-        kill = 
+	gen = @l0%c @l0%n @l0%x @l0%y @l0%e @l0%ie @l0%col @l0%W @l0%H @l0%rnd @l0%win @l0%t4 @l0%t11 @l0%t12 @l0%t7 @l0%t16 @l0%t17 @l0%t15 @l0%t22 
+	kill = 
 @l1
-        gen = @l1%t28 @l1%t27 
-        kill = 
+	gen = @l1%t28 @l1%t27 
+	kill = 
 @l2
-        gen = @l2%t31 @l2%t33 @l2%t34 @l2%t35 @l2%t36 @l2%t32 @l2%t39 @l2%t43 @l2%t41 @l2%t40 @l2%t38 @l2%t46 @l2%t45 
-        kill = 
+	gen = @l2%t31 @l2%t33 @l2%t34 @l2%t35 @l2%t36 @l2%t32 @l2%t39 @l2%t43 @l2%t41 @l2%t40 @l2%t38 @l2%t46 @l2%t45 
+	kill = 
 @l3
-        gen = @l3%t50 @l3%t51 @l3%t52 @l3%t53 @l3%t49 @l3%t55 @l3%t54 
-        kill = 
+	gen = @l3%t50 @l3%t51 @l3%t52 @l3%t53 @l3%t49 @l3%t55 @l3%t54 
+	kill = 
 @l4
-        gen = @l4%t59 @l4%t60 @l4%t58 
-        kill = 
+	gen = @l4%t59 @l4%t60 @l4%t58 
+	kill = 
 @l5
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l7
-        gen = @l7%t64 @l7%t65 @l7%t63 
-        kill = 
+	gen = @l7%t64 @l7%t65 @l7%t63 
+	kill = 
 @l8
-        gen = @l8%t67 @l8%t68 @l8%t66 @l8%t70 @l8%t69 
-        kill = 
+	gen = @l8%t67 @l8%t68 @l8%t66 @l8%t70 @l8%t69 
+	kill = 
 @l9
-        gen = @l9%t72 @l9%t71 
-        kill = 
+	gen = @l9%t72 @l9%t71 
+	kill = 
 @l6
-        gen = @l6%t74 @l6%t73 
-        kill = 
+	gen = @l6%t74 @l6%t73 
+	kill = 
 @l10
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l11
-        gen = @l11%t77 @l11%t76 
-        kill = 
+	gen = @l11%t77 @l11%t76 
+	kill = 
 @l13
-        gen = @l13%t81 @l13%t80 @l13%t79 @l13%t78 
-        kill = 
+	gen = @l13%t81 @l13%t80 @l13%t79 @l13%t78 
+	kill = 
 @l16
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l17
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l14
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l12
-        gen = @l12%t85 @l12%t84 @l12%t87 @l12%t86 @l12%t88 
-        kill = 
+	gen = @l12%t85 @l12%t84 @l12%t87 @l12%t86 @l12%t88 
+	kill = 
 

@@ -1,13 +1,13 @@
 @fill0.cond
-        gen = @fill0.cond%n @fill0.cond%prime @fill0.cond%uuu @fill0.cond%cond1 
-        kill = @fill0.exit%n @fill0.exit%uuu 
+	gen = @fill0.cond%n @fill0.cond%prime @fill0.cond%uuu @fill0.cond%cond1 
+	kill = @fill0.exit%n @fill0.exit%uuu 
 @fill0.body
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @fill0.exit
-        gen = @fill0.exit%n @fill0.exit%uuu 
-        kill = @fill0.cond%n @fill0.cond%uuu 
+	gen = @fill0.exit%n @fill0.exit%uuu 
+	kill = @fill0.cond%n @fill0.cond%uuu 
 @fill2.header
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 

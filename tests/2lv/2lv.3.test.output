@@ -1,13 +1,13 @@
 @l0
-        lv_out = %n %zx %zy %fx %nx %fy %ny %col %rnd %x %y 
+	lv_out = %n %zx %zy %fx %nx %fy %ny %col %rnd %x %y 
 @l1
-        lv_out = %zx %zy %fx %nx %fy %ny %n %col %rnd %x %y 
+	lv_out = %zx %zy %fx %nx %fy %ny %n %col %rnd %x %y 
 @l2
-        lv_out = %col %n %rnd %x %y %zx %zy %fx %nx %fy %ny 
+	lv_out = %col %n %rnd %x %y %zx %zy %fx %nx %fy %ny 
 @l4
-        lv_out = %col %n %rnd %x %y 
+	lv_out = %col %n %rnd %x %y 
 @l5
-        lv_out = %n %zx %zy %fx %nx %fy %ny %col %rnd %x %y 
+	lv_out = %n %zx %zy %fx %nx %fy %ny %col %rnd %x %y 
 @l3
-        lv_out = 
+	lv_out = 
 

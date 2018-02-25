@@ -1,58 +1,58 @@
 @l0
-        gen = @l0%t0 @l0%t1 @l0%t2 @l0%k @l0%x @l0%y @l0%i @l0%j @l0%b @l0%N @l0%t4 @l0%t8 @l0%t9 @l0%t10 @l0%t11 @l0%t7 @l0%t6 @l0%t12 @l0%t13 @l0%t14 @l0%t5 @l0%t16 @l0%t15 
-        kill = 
+	gen = @l0%t0 @l0%t1 @l0%t2 @l0%k @l0%x @l0%y @l0%i @l0%j @l0%b @l0%N @l0%t4 @l0%t8 @l0%t9 @l0%t10 @l0%t11 @l0%t7 @l0%t6 @l0%t12 @l0%t13 @l0%t14 @l0%t5 @l0%t16 @l0%t15 
+	kill = 
 @l1
-        gen = @l1%t19 @l1%t18 
-        kill = 
+	gen = @l1%t19 @l1%t18 
+	kill = 
 @l8
-        gen = @l8%t22 @l8%t21 
-        kill = 
+	gen = @l8%t22 @l8%t21 
+	kill = 
 @l7
-        gen = @l7%t28 @l7%t27 @l7%t26 @l7%t31 @l7%t30 @l7%t25 @l7%t24 
-        kill = 
+	gen = @l7%t28 @l7%t27 @l7%t26 @l7%t31 @l7%t30 @l7%t25 @l7%t24 
+	kill = 
 @l4
-        gen = @l4%t33 @l4%t35 @l4%t34 @l4%t37 @l4%t36 
-        kill = 
+	gen = @l4%t33 @l4%t35 @l4%t34 @l4%t37 @l4%t36 
+	kill = 
 @l9
-        gen = @l9%t39 
-        kill = 
+	gen = @l9%t39 
+	kill = 
 @l10
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l5
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l2
-        gen = @l2%t42 
-        kill = 
+	gen = @l2%t42 
+	kill = 
 @l12
-        gen = @l12%t46 @l12%t45 
-        kill = 
+	gen = @l12%t46 @l12%t45 
+	kill = 
 @l13
-        gen = @l13%t49 
-        kill = 
+	gen = @l13%t49 
+	kill = 
 @l15
-        gen = @l15%t53 @l15%t52 
-        kill = 
+	gen = @l15%t53 @l15%t52 
+	kill = 
 @l16
-        gen = @l16%t58 @l16%t57 @l16%t60 @l16%t59 @l16%t56 @l16%t55 
-        kill = 
+	gen = @l16%t58 @l16%t57 @l16%t60 @l16%t59 @l16%t56 @l16%t55 
+	kill = 
 @l21
-        gen = @l21%t64 @l21%t65 @l21%t63 @l21%t67 @l21%t68 @l21%t66 @l21%t62 
-        kill = 
+	gen = @l21%t64 @l21%t65 @l21%t63 @l21%t67 @l21%t68 @l21%t66 @l21%t62 
+	kill = 
 @l18
-        gen = @l18%t71 @l18%t70 @l18%t74 @l18%t75 @l18%t73 @l18%t77 @l18%t78 @l18%t76 @l18%t69 
-        kill = 
+	gen = @l18%t71 @l18%t70 @l18%t74 @l18%t75 @l18%t73 @l18%t77 @l18%t78 @l18%t76 @l18%t69 
+	kill = 
 @l19
-        gen = @l19%t80 @l19%t79 
-        kill = 
+	gen = @l19%t80 @l19%t79 
+	kill = 
 @l17
-        gen = @l17%t82 @l17%t81 
-        kill = 
+	gen = @l17%t82 @l17%t81 
+	kill = 
 @l14
-        gen = 
-        kill = 
+	gen = 
+	kill = 
 @l3
-        gen = @l3%t88 @l3%t89 @l3%t90 @l3%t91 @l3%t87 @l3%t86 @l3%t92 @l3%t93 @l3%t94 @l3%t85 
-        kill = 
+	gen = @l3%t88 @l3%t89 @l3%t90 @l3%t91 @l3%t87 @l3%t86 @l3%t92 @l3%t93 @l3%t94 @l3%t85 
+	kill = 
 

@@ -1,37 +1,37 @@
 @l0
-        def = %t0 %t1 %t2 %t3 %x %y %t %Q %i %r 
-        use = 
+	def = %t0 %t1 %t2 %t3 %x %y %t %Q %i %r 
+	use = 
 @l1
-        def = %t8 %t9 %t7 
-        use = %i %Q 
+	def = %t8 %t9 %t7 
+	use = %i %Q 
 @l2
-        def = %t12 %t17 %t18 %t19 %t20 %t16 %t15 %t21 %t22 %t23 %t14 %t13 %t11 %t26 %t31 %t32 %t33 %t34 %t30 %t29 %t35 %t36 %t37 %t28 %t27 %t25 %t41 %t42 %t40 %t43 %t39 %t46 %t47 %t45 %t48 %t44 %t38 
-        use = %r %t %x %i %y %Q 
+	def = %t12 %t17 %t18 %t19 %t20 %t16 %t15 %t21 %t22 %t23 %t14 %t13 %t11 %t26 %t31 %t32 %t33 %t34 %t30 %t29 %t35 %t36 %t37 %t28 %t27 %t25 %t41 %t42 %t40 %t43 %t39 %t46 %t47 %t45 %t48 %t44 %t38 
+	use = %r %t %x %i %y %Q 
 @l4
-        def = %t51 %t56 %t58 %t59 %t57 %t60 %t61 %t55 %t54 %t63 %t64 %t62 %t65 %t66 %t53 %t52 %t50 
-        use = %r %t %x %i %y 
+	def = %t51 %t56 %t58 %t59 %t57 %t60 %t61 %t55 %t54 %t63 %t64 %t62 %t65 %t66 %t53 %t52 %t50 
+	use = %r %t %x %i %y 
 @l5
-        def = %t70 %t71 %t69 %t72 %t68 %t76 %t77 %t75 %t73 %t67 
-        use = %x %i %Q %y 
+	def = %t70 %t71 %t69 %t72 %t68 %t76 %t77 %t75 %t73 %t67 
+	use = %x %i %Q %y 
 @l7
-        def = %t80 %t85 %t87 %t88 %t86 %t89 %t90 %t84 %t83 %t92 %t93 %t91 %t94 %t95 %t82 %t81 %t79 
-        use = %r %t %x %i %y 
+	def = %t80 %t85 %t87 %t88 %t86 %t89 %t90 %t84 %t83 %t92 %t93 %t91 %t94 %t95 %t82 %t81 %t79 
+	use = %r %t %x %i %y 
 @l8
-        def = %t100 %t101 %t99 %t97 %t104 %t105 %t103 %t106 %t102 %t96 
-        use = %x %i %y %Q 
+	def = %t100 %t101 %t99 %t97 %t104 %t105 %t103 %t106 %t102 %t96 
+	use = %x %i %y %Q 
 @l10
-        def = %t109 %t114 %t116 %t117 %t115 %t118 %t119 %t113 %t112 %t121 %t122 %t120 %t123 %t124 %t111 %t110 %t108 
-        use = %r %t %x %i %y 
+	def = %t109 %t114 %t116 %t117 %t115 %t118 %t119 %t113 %t112 %t121 %t122 %t120 %t123 %t124 %t111 %t110 %t108 
+	use = %r %t %x %i %y 
 @l11
-        def = %t129 %t130 %t128 %t126 %t134 %t135 %t133 %t131 %t125 
-        use = %x %i %y 
+	def = %t129 %t130 %t128 %t126 %t134 %t135 %t133 %t131 %t125 
+	use = %x %i %y 
 @l13
-        def = %t138 %t143 %t145 %t146 %t144 %t147 %t148 %t142 %t141 %t150 %t151 %t149 %t152 %t153 %t140 %t139 %t137 
-        use = %r %t %x %i %y 
+	def = %t138 %t143 %t145 %t146 %t144 %t147 %t148 %t142 %t141 %t150 %t151 %t149 %t152 %t153 %t140 %t139 %t137 
+	use = %r %t %x %i %y 
 @l14
-        def = %t155 %t154 
-        use = %i 
+	def = %t155 %t154 
+	use = %i 
 @l3
-        def = %t156 
-        use = %r 
+	def = %t156 
+	use = %r 
 

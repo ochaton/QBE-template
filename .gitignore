@@ -4,3 +4,7 @@ include/
 obj/
 *.o
 directories
+2rd.c
+2gk.c
+2lv.c
+2du.c

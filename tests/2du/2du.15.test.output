@@ -1,13 +1,13 @@
 @l0
-        def = %i %b %t0 
-        use = 
+	def = %i %b %t0 
+	use = 
 @l1
-        def = %t5 %t4 
-        use = %i 
+	def = %t5 %t4 
+	use = %i 
 @l2
-        def = %t8 %t12 %t13 %t14 %t15 %t11 %t17 %t16 
-        use = %b %i 
+	def = %t8 %t12 %t13 %t14 %t15 %t11 %t17 %t16 
+	use = %b %i 
 @l3
-        def = 
-        use = 
+	def = 
+	use = 
 

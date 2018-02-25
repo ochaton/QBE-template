@@ -1,10 +1,10 @@
 @start
-        def = %x 
-        use = 
+	def = %x 
+	use = 
 @loop
-        def = %x %cond 
-        use = %x 
+	def = %x %cond 
+	use = %x 
 @end
-        def = %t 
-        use = %x 
+	def = %t 
+	use = %x 
 

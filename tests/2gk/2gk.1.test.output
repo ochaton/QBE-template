@@ -1,10 +1,10 @@
 @start
-        gen = @start%x 
-        kill = @loop%x 
+	gen = @start%x 
+	kill = @loop%x 
 @loop
-        gen = @loop%x @loop%cond 
-        kill = @start%x 
+	gen = @loop%x @loop%cond 
+	kill = @start%x 
 @end
-        gen = @end%t 
-        kill = 
+	gen = @end%t 
+	kill = 
 

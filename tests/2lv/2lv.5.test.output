@@ -1,29 +1,29 @@
 @l0
-        lv_out = %n %t %p %c 
+	lv_out = %n %t %p %c 
 @l1
-        lv_out = %t %p %n %c 
+	lv_out = %t %p %n %c 
 @l2
-        lv_out = %t %n %p %c 
+	lv_out = %t %n %p %c 
 @l4
-        lv_out = %n %t %p %c 
+	lv_out = %n %t %p %c 
 @l5
-        lv_out = %p %t %n %c 
+	lv_out = %p %t %n %c 
 @l7
-        lv_out = %t %n %p %c 
+	lv_out = %t %n %p %c 
 @l8
-        lv_out = %t %n %p %c 
+	lv_out = %t %n %p %c 
 @l6
-        lv_out = %c %n %t %p 
+	lv_out = %c %n %t %p 
 @l10
-        lv_out = %c %n %t %p 
+	lv_out = %c %n %t %p 
 @l16
-        lv_out = %n %c %t %p 
+	lv_out = %n %c %t %p 
 @l13
-        lv_out = %n %c %t %p 
+	lv_out = %n %c %t %p 
 @l14
-        lv_out = %n %t %p %c 
+	lv_out = %n %t %p %c 
 @l11
-        lv_out = %n %t %p %c 
+	lv_out = %n %t %p %c 
 @l3
-        lv_out = 
+	lv_out = 
 
