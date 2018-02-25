@@ -1,0 +1,195 @@
+====== Test #10 =======
+--- Input: size 1324 ---
+export function w $main() {
+@l0
+        %n =l alloc4 4
+        %nv =l alloc4 4
+        %c =l alloc4 4
+        %cmax =l alloc4 4
+        %mem =l alloc8 8
+        storew 0, %cmax
+        storew 1, %nv
+@l1
+        %t5 =w loadw %nv
+        %t4 =w csltw %t5, 10
+        jnz %t4, @l2, @l3
+@l2
+        %t8 =w loadw %nv
+        storew %t8, %n
+        storew 0, %c
+@l4
+        %t12 =w loadw %n
+        %t11 =w cnew %t12, 1
+        jnz %t11, @l5, @l6
+@l5
+        %t15 =w loadw %n
+        %t16 =w loadw %nv
+        %t14 =w csltw %t15, %t16
+        jnz %t14, @l7, @l8
+@l7
+        %t19 =w loadw %c
+        %t22 =l loadl %mem
+        %t23 =w loadw %n
+        %t24 =l extsw %t23
+        %t25 =l mul 4, %t24
+        %t21 =l add %t22, %t25
+        %t20 =w loadw %t21
+        %t18 =w add %t19, %t20
+        storew %t18, %c
+        jmp @l6
+@l8
+        %t27 =w loadw %n
+        %t26 =w and %t27, 1
+        jnz %t26, @l10, @l11
+@l10
+        %t33 =w loadw %n
+        %t31 =w mul 3, %t33
+        %t30 =w add %t31, 1
+        storew %t30, %n
+        jmp @l12
+@l11
+        %t37 =w loadw %n
+        %t36 =w div %t37, 2
+        storew %t36, %n
+@l12
+        %t40 =w loadw %c
+        %t39 =w add %t40, 1
+        storew %t39, %c
+        jmp @l4
+@l6
+        %t42 =w loadw %c
+        %t44 =l loadl %mem
+        %t45 =w loadw %nv
+        %t46 =l extsw %t45
+        %t47 =l mul 4, %t46
+        %t43 =l add %t44, %t47
+        storew %t42, %t43
+        %t49 =w loadw %cmax
+        %t50 =w loadw %c
+        %t48 =w csltw %t49, %t50
+        jnz %t48, @l13, @l14
+@l13
+        %t52 =w loadw %c
+        storew %t52, %cmax
+@l14
+        %t54 =w loadw %nv
+        %t53 =w add %t54, 1
+        storew %t53, %nv
+        jmp @l1
+@l3
+        %t57 =w loadw %cmax
+        %t55 =w call $printf(l $glo1, w %t57, ...)
+        ret 0
+}
+
+--- Output: size 654 ---
+@l0
+        gen = @l0%n @l0%nv @l0%c @l0%cmax @l0%mem 
+        kill = 
+@l1
+        gen = @l1%t5 @l1%t4 
+        kill = 
+@l2
+        gen = @l2%t8 
+        kill = 
+@l4
+        gen = @l4%t12 @l4%t11 
+        kill = 
+@l5
+        gen = @l5%t15 @l5%t16 @l5%t14 
+        kill = 
+@l7
+        gen = @l7%t19 @l7%t22 @l7%t23 @l7%t24 @l7%t25 @l7%t21 @l7%t20 @l7%t18 
+        kill = 
+@l8
+        gen = @l8%t27 @l8%t26 
+        kill = 
+@l10
+        gen = @l10%t33 @l10%t31 @l10%t30 
+        kill = 
+@l11
+        gen = @l11%t37 @l11%t36 
+        kill = 
+@l12
+        gen = @l12%t40 @l12%t39 
+        kill = 
+@l6
+        gen = @l6%t42 @l6%t44 @l6%t45 @l6%t46 @l6%t47 @l6%t43 @l6%t49 @l6%t50 @l6%t48 
+        kill = 
+@l13
+        gen = @l13%t52 
+        kill = 
+@l14
+        gen = @l14%t54 @l14%t53 
+        kill = 
+@l3
+        gen = @l3%t57 @l3%t55 
+        kill = 
+
+--- Correct: size 640 ---
+@l0
+        gen = @l0%n @l0%nv @l0%c @l0%cmax @l0%mem
+        kill =
+
+@l1
+        gen = @l1%t5 @l1%t4
+        kill =
+
+@l2
+        gen = @l2%t8
+        kill =
+
+@l4
+        gen = @l4%t12 @l4%t11
+        kill =
+
+@l5
+        gen = @l5%t15 @l5%t16 @l5%t14
+        kill =
+
+@l7
+        gen = @l7%t19 @l7%t22 @l7%t23 @l7%t24 @l7%t25 @l7%t21 @l7%t20 @l7%t18
+        kill =
+
+@l8
+        gen = @l8%t27 @l8%t26
+        kill =
+
+@l10
+        gen = @l10%t33 @l10%t31 @l10%t30
+        kill =
+
+@l11
+        gen = @l11%t37 @l11%t36
+        kill =
+
+@l12
+        gen = @l12%t40 @l12%t39
+        kill =
+
+@l6
+        gen = @l6%t42 @l6%t44 @l6%t45 @l6%t46 @l6%t47 @l6%t43 @l6%t49 @l6%t50 @l6%t48
+        kill =
+
+@l13
+        gen = @l13%t52
+        kill =
+
+@l14
+        gen = @l14%t54 @l14%t53
+        kill =
+
+@l3
+        gen = @l3%t57 @l3%t55
+        kill =
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=5, maxvsz=21635072, maxrss=3440640, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

@@ -1,0 +1,177 @@
+====== Test #5 =======
+--- Input: size 1002 ---
+export function w $main() {
+@l0
+        %n =l alloc4 4
+        %t =l alloc4 4
+        %c =l alloc4 4
+        %p =l alloc4 4
+        storew 0, %c
+        storew 2, %n
+@l1
+        %t5 =w loadw %n
+        %t4 =w csltw %t5, 5000
+        jnz %t4, @l2, @l3
+@l2
+        storew 2, %t
+        storew 1, %p
+@l4
+        %t13 =w loadw %t
+        %t14 =w loadw %t
+        %t12 =w mul %t13, %t14
+        %t15 =w loadw %n
+        %t11 =w cslew %t12, %t15
+        jnz %t11, @l5, @l6
+@l5
+        %t18 =w loadw %n
+        %t19 =w loadw %t
+        %t17 =w rem %t18, %t19
+        %t16 =w ceqw %t17, 0
+        jnz %t16, @l7, @l8
+@l7
+        storew 0, %p
+@l8
+        %t24 =w loadw %t
+        %t23 =w add %t24, 1
+        storew %t23, %t
+        jmp @l4
+@l6
+        %t25 =w loadw %p
+        jnz %t25, @l10, @l11
+@l10
+        %t26 =w loadw %c
+        jnz %t26, @l16, @l14
+@l16
+        %t29 =w loadw %c
+        %t28 =w rem %t29, 10
+        %t27 =w ceqw %t28, 0
+        jnz %t27, @l13, @l14
+@l13
+        %t32 =w call $printf(l $glo1, ...)
+@l14
+        %t36 =w loadw %n
+        %t34 =w call $printf(l $glo2, w %t36, ...)
+        %t38 =w loadw %c
+        %t37 =w add %t38, 1
+        storew %t37, %c
+@l11
+        %t40 =w loadw %n
+        %t39 =w add %t40, 1
+        storew %t39, %n
+        jmp @l1
+@l3
+        %t41 =w call $printf(l $glo3, ...)
+        ret 0
+}
+
+--- Output: size 470 ---
+@l0
+        def = %n %t %c %p 
+        use = 
+@l1
+        def = %t5 %t4 
+        use = %n 
+@l2
+        def = 
+        use = %t %p 
+@l4
+        def = %t13 %t14 %t12 %t15 %t11 
+        use = %t %n 
+@l5
+        def = %t18 %t19 %t17 %t16 
+        use = %n %t 
+@l7
+        def = 
+        use = %p 
+@l8
+        def = %t24 %t23 
+        use = %t 
+@l6
+        def = %t25 
+        use = %p 
+@l10
+        def = %t26 
+        use = %c 
+@l16
+        def = %t29 %t28 %t27 
+        use = %c 
+@l13
+        def = %t32 
+        use = 
+@l14
+        def = %t36 %t34 %t38 %t37 
+        use = %n %c 
+@l11
+        def = %t40 %t39 
+        use = %n 
+@l3
+        def = %t41 
+        use = 
+
+--- Correct: size 456 ---
+@l0
+        def = %p %c %t %n
+        use =
+
+@l1
+        def = %t4 %t5
+        use = %n
+
+@l2
+        def =
+        use = %p %t
+
+@l4
+        def = %t11 %t15 %t12 %t14 %t13
+        use = %n %t
+
+@l5
+        def = %t16 %t17 %t19 %t18
+        use = %t %n
+
+@l7
+        def =
+        use = %p
+
+@l8
+        def = %t23 %t24
+        use = %t
+
+@l6
+        def = %t25
+        use = %p
+
+@l10
+        def = %t26
+        use = %c
+
+@l16
+        def = %t27 %t28 %t29
+        use = %c
+
+@l13
+        def = %t32
+        use =
+
+@l14
+        def = %t37 %t38 %t34 %t36
+        use = %c %n
+
+@l11
+        def = %t39 %t40
+        use = %n
+
+@l3
+        def = %t41
+        use =
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=21635072, maxrss=3416064, nvcsw=1, nivcsw=3 }
+checker: { utime=0, stime=0, ptime=0, rtime=1, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

@@ -1,0 +1,108 @@
+====== Test #12 =======
+--- Input: size 726 ---
+export function w $board() {
+@l0
+        %x =l alloc4 4
+        %y =l alloc4 4
+        %b =l alloc8 8
+        storew 0, %y
+@l1
+        %t3 =w loadw %y
+        %t2 =w csltw %t3, 8
+        jnz %t2, @l2, @l3
+@l2
+        storew 0, %x
+@l4
+        %t8 =w loadw %x
+        %t7 =w csltw %t8, 8
+        jnz %t7, @l5, @l6
+@l5
+        %t16 =l loadl %b
+        %t17 =w loadw %x
+        %t18 =l extsw %t17
+        %t19 =l mul 8, %t18
+        %t15 =l add %t16, %t19
+        %t14 =l loadl %t15
+        %t20 =w loadw %y
+        %t21 =l extsw %t20
+        %t22 =l mul 4, %t21
+        %t13 =l add %t14, %t22
+        %t12 =w loadw %t13
+        %t10 =w call $printf(l $glo1, w %t12, ...)
+        %t24 =w loadw %x
+        %t23 =w add %t24, 1
+        storew %t23, %x
+        jmp @l4
+@l6
+        %t25 =w call $printf(l $glo2, ...)
+        %t28 =w loadw %y
+        %t27 =w add %t28, 1
+        storew %t27, %y
+        jmp @l1
+@l3
+        %t29 =w call $printf(l $glo3, ...)
+        ret 0
+}
+
+--- Output: size 337 ---
+@l0
+        gen = @l0%x @l0%y @l0%b 
+        kill = 
+@l1
+        gen = @l1%t3 @l1%t2 
+        kill = 
+@l2
+        gen = 
+        kill = 
+@l4
+        gen = @l4%t8 @l4%t7 
+        kill = 
+@l5
+        gen = @l5%t16 @l5%t17 @l5%t18 @l5%t19 @l5%t15 @l5%t14 @l5%t20 @l5%t21 @l5%t22 @l5%t13 @l5%t12 @l5%t10 @l5%t24 @l5%t23 
+        kill = 
+@l6
+        gen = @l6%t25 @l6%t28 @l6%t27 
+        kill = 
+@l3
+        gen = @l3%t29 
+        kill = 
+
+--- Correct: size 330 ---
+@l0
+        gen = @l0%x @l0%y @l0%b
+        kill =
+
+@l1
+        gen = @l1%t3 @l1%t2
+        kill =
+
+@l2
+        gen =
+        kill =
+
+@l4
+        gen = @l4%t8 @l4%t7
+        kill =
+
+@l5
+        gen = @l5%t16 @l5%t17 @l5%t18 @l5%t19 @l5%t15 @l5%t14 @l5%t20 @l5%t21 @l5%t22 @l5%t13 @l5%t12 @l5%t10 @l5%t24 @l5%t23
+        kill =
+
+@l6
+        gen = @l6%t25 @l6%t28 @l6%t27
+        kill =
+
+@l3
+        gen = @l3%t29
+        kill =
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=4, maxvsz=21635072, maxrss=3461120, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

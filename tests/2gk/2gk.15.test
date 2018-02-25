@@ -1,0 +1,69 @@
+====== Test #15 =======
+--- Input: size 392 ---
+export function w $main() {
+@l0
+        %i =l alloc4 4
+        %b =l alloc8 8
+        %t0 =w call $printf(l $glo1, ...)
+        storew 0, %i
+@l1
+        %t5 =w loadw %i
+        %t4 =w csltw %t5, 8
+        jnz %t4, @l2, @l3
+@l2
+        %t8 =w mul 8, 4
+        %t12 =l loadl %b
+        %t13 =w loadw %i
+        %t14 =l extsw %t13
+        %t15 =l mul 4, %t14
+        %t11 =l add %t12, %t15
+        storew %t8, %t11
+        %t17 =w loadw %i
+        %t16 =w add %t17, 1
+        storew %t16, %i
+        jmp @l1
+@l3
+        ret 0
+}
+
+--- Output: size 180 ---
+@l0
+        gen = @l0%i @l0%b @l0%t0 
+        kill = 
+@l1
+        gen = @l1%t5 @l1%t4 
+        kill = 
+@l2
+        gen = @l2%t8 @l2%t12 @l2%t13 @l2%t14 @l2%t15 @l2%t11 @l2%t17 @l2%t16 
+        kill = 
+@l3
+        gen = 
+        kill = 
+
+--- Correct: size 176 ---
+@l0
+        gen = @l0%i @l0%b @l0%t0
+        kill =
+
+@l1
+        gen = @l1%t5 @l1%t4
+        kill =
+
+@l2
+        gen = @l2%t8 @l2%t12 @l2%t13 @l2%t14 @l2%t15 @l2%t11 @l2%t17 @l2%t16
+        kill =
+
+@l3
+        gen =
+        kill =
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=4, maxvsz=21635072, maxrss=3457024, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=4169728, maxrss=1744896, nvcsw=1, nivcsw=1 }
+

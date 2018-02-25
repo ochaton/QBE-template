@@ -1,0 +1,13 @@
+@fill0.cond
+        def = %n %prime %uuu %cond1 
+        use = 
+@fill0.body
+        def = 
+        use = %prime 
+@fill0.exit
+        def = %n %uuu 
+        use = 
+@fill2.header
+        def = 
+        use = 
+

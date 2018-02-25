@@ -1,0 +1,106 @@
+====== Test #9 =======
+--- Input: size 843 ---
+export function w $main(w %t0, l %t1, w %t2, w %t3) {
+@l0
+        %ac =l alloc4 4
+        storew %t0, %ac
+        %av =l alloc8 8
+        storel %t1, %av
+        %Q =l alloc4 4
+        storew %t2, %Q
+        %N =l alloc4 4
+        storew %t3, %N
+        %i =l alloc4 4
+        %t =l alloc8 8
+        storew 8, %Q
+        %t8 =w loadw %ac
+        %t6 =w cslew 2, %t8
+        jnz %t6, @l1, @l2
+@l1
+        %t13 =l loadl %av
+        %t12 =l add %t13, 8
+        %t11 =l loadl %t12
+        %t10 =w call $atoi(l %t11, ...)
+        storew %t10, %Q
+@l2
+        storew 0, %i
+@l4
+        %t18 =w loadw %i
+        %t19 =w loadw %Q
+        %t17 =w csltw %t18, %t19
+        jnz %t17, @l5, @l6
+@l5
+        %t22 =w loadw %Q
+        %t21 =w mul %t22, 4
+        %t25 =l loadl %t
+        %t26 =w loadw %i
+        %t27 =l extsw %t26
+        %t28 =l mul 4, %t27
+        %t24 =l add %t25, %t28
+        storew %t21, %t24
+        %t30 =w loadw %i
+        %t29 =w add %t30, 1
+        storew %t29, %i
+        jmp @l4
+@l6
+        %t31 =w call $go(w 0, ...)
+        %t35 =w loadw %N
+        %t33 =w call $printf(l $glo1, w %t35, ...)
+        ret 0
+}
+
+--- Output: size 287 ---
+@l0
+        def = %t0 %t1 %t2 %t3 %ac %av %Q %N %i %t %t8 %t6 
+        use = 
+@l1
+        def = %t13 %t12 %t11 %t10 
+        use = %av %Q 
+@l2
+        def = 
+        use = %i 
+@l4
+        def = %t18 %t19 %t17 
+        use = %i %Q 
+@l5
+        def = %t22 %t21 %t25 %t26 %t27 %t28 %t24 %t30 %t29 
+        use = %Q %t %i 
+@l6
+        def = %t31 %t35 %t33 
+        use = %N 
+
+--- Correct: size 281 ---
+@l0
+        def = %t6 %t8 %t %i %N %Q %av %ac %t3 %t2 %t1 %t0
+        use =
+
+@l1
+        def = %t10 %t11 %t12 %t13
+        use = %Q %av
+
+@l2
+        def =
+        use = %i
+
+@l4
+        def = %t17 %t19 %t18
+        use = %Q %i
+
+@l5
+        def = %t29 %t30 %t24 %t28 %t27 %t26 %t25 %t21 %t22
+        use = %i %t %Q
+
+@l6
+        def = %t33 %t35 %t31
+        use = %N
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=21635072, maxrss=3420160, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=1, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

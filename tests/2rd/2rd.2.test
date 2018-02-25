@@ -1,0 +1,45 @@
+====== Test #2 =======
+--- Input: size 259 ---
+export function $sieve(w %n, l %prime) {
+@fill0.cond
+ %uuu =l alloc4 4
+ %cond1 =w csgtw %n, 0
+ jnz %cond1, @fill0.body, @fill2.header
+
+@fill0.body
+ storeb 0, %prime
+
+@fill0.exit
+ %n =w cast 2
+ %uuu =l alloc8 2
+ %uuu =l alloc16 1
+
+@fill2.header
+ ret
+}
+
+--- Output: size 318 ---
+@fill0.cond
+        rd_in = 
+@fill0.body
+        rd_in = @fill0.cond%n @fill0.cond%prime @fill0.cond%uuu @fill0.cond%cond1 
+@fill0.exit
+        rd_in = @fill0.cond%n @fill0.cond%prime @fill0.cond%uuu @fill0.cond%cond1 
+@fill2.header
+        rd_in = @fill0.cond%n @fill0.cond%prime @fill0.cond%uuu @fill0.cond%cond1 @fill0.exit%n @fill0.exit%uuu 
+
+--- Correct: size 316 ---
+@fill2.header rd_in = @fill0.cond%cond1 @fill0.cond%uuu @fill0.cond%prime @fill0.cond%n @fill0.exit%n @fill0.exit%uuu
+@fill0.exit   rd_in = @fill0.cond%cond1 @fill0.cond%uuu @fill0.cond%prime @fill0.cond%n
+@fill0.body   rd_in = @fill0.cond%cond1 @fill0.cond%uuu @fill0.cond%prime @fill0.cond%n
+@fill0.cond   rd_in =
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=21655552, maxrss=3485696, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=1, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

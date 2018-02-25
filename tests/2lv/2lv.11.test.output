@@ -1,0 +1,31 @@
+@l0
+        lv_out = %a %b %d %i %c 
+@l1
+        lv_out = %a %b %d %i %c 
+@l2
+        lv_out = %b %a %d %i %c 
+@l4
+        lv_out = %a %b %d %i %c 
+@l5
+        lv_out = %i %d %c %b %a 
+@l7
+        lv_out = %i %d %c %b %a 
+@l8
+        lv_out = %i %c %b %a %d 
+@l10
+        lv_out = %a %b %c %d %i 
+@l16
+        lv_out = %a %b %c %d %i 
+@l13
+        lv_out = 
+@l14
+        lv_out = %b %a %d %i %c 
+@l11
+        lv_out = %i %d %c %b %a 
+@l9
+        lv_out = %b %a %d %i %c 
+@l6
+        lv_out = %a %b %d %i %c 
+@l3
+        lv_out = 
+

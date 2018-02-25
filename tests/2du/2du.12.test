@@ -1,0 +1,108 @@
+====== Test #12 =======
+--- Input: size 726 ---
+export function w $board() {
+@l0
+        %x =l alloc4 4
+        %y =l alloc4 4
+        %b =l alloc8 8
+        storew 0, %y
+@l1
+        %t3 =w loadw %y
+        %t2 =w csltw %t3, 8
+        jnz %t2, @l2, @l3
+@l2
+        storew 0, %x
+@l4
+        %t8 =w loadw %x
+        %t7 =w csltw %t8, 8
+        jnz %t7, @l5, @l6
+@l5
+        %t16 =l loadl %b
+        %t17 =w loadw %x
+        %t18 =l extsw %t17
+        %t19 =l mul 8, %t18
+        %t15 =l add %t16, %t19
+        %t14 =l loadl %t15
+        %t20 =w loadw %y
+        %t21 =l extsw %t20
+        %t22 =l mul 4, %t21
+        %t13 =l add %t14, %t22
+        %t12 =w loadw %t13
+        %t10 =w call $printf(l $glo1, w %t12, ...)
+        %t24 =w loadw %x
+        %t23 =w add %t24, 1
+        storew %t23, %x
+        jmp @l4
+@l6
+        %t25 =w call $printf(l $glo2, ...)
+        %t28 =w loadw %y
+        %t27 =w add %t28, 1
+        storew %t27, %y
+        jmp @l1
+@l3
+        %t29 =w call $printf(l $glo3, ...)
+        ret 0
+}
+
+--- Output: size 276 ---
+@l0
+        def = %x %y %b 
+        use = 
+@l1
+        def = %t3 %t2 
+        use = %y 
+@l2
+        def = 
+        use = %x 
+@l4
+        def = %t8 %t7 
+        use = %x 
+@l5
+        def = %t16 %t17 %t18 %t19 %t15 %t14 %t20 %t21 %t22 %t13 %t12 %t10 %t24 %t23 
+        use = %b %x %y 
+@l6
+        def = %t25 %t28 %t27 
+        use = %y 
+@l3
+        def = %t29 
+        use = 
+
+--- Correct: size 269 ---
+@l0
+        def = %b %y %x
+        use =
+
+@l1
+        def = %t2 %t3
+        use = %y
+
+@l2
+        def =
+        use = %x
+
+@l4
+        def = %t7 %t8
+        use = %x
+
+@l5
+        def = %t23 %t24 %t10 %t12 %t13 %t22 %t21 %t20 %t14 %t15 %t19 %t18 %t17 %t16
+        use = %x %y %b
+
+@l6
+        def = %t27 %t28 %t25
+        use = %y
+
+@l3
+        def = %t29
+        use =
+
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=5, maxvsz=21635072, maxrss=3477504, nvcsw=1, nivcsw=3 }
+checker: { utime=0, stime=0, ptime=0, rtime=3, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

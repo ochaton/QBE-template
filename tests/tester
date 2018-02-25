@@ -1,0 +1,75 @@
+#!/usr/bin/env perl
+use 5.010;
+use strict;
+use warnings;
+
+no warnings 'uninitialized';
+use Test::More;
+
+my %testdirs = map { $_ => 1 } qw (2gk 2rd 2du 2lv);
+
+my $dirname = $ARGV[0];
+unless ($testdirs{ $dirname }) {
+	die "Test $dirname not found";
+}
+
+unless (-d $dirname) {
+	die "Directory for test $dirname not found"
+}
+
+my %tests;
+
+opendir my $testdir, $dirname or die "Couldn't open directory $dirname with tests: $! $@";
+while (readdir $testdir) {
+	next unless /(input|output)$/;
+
+	my ($testname, $type) = $_ =~ m/(^.+)\.(input|output)$/;
+	$tests{ $testname }{ $type } = do { local $/; open my $fh, '<', "$dirname/$_"; <$fh> or die "$dirname/$_: $! $@" };
+}
+
+for my $testname (keys %tests) {
+	@{$tests{$testname}}{qw(input output)} or die "Test $testname is broken: input or output file is missing";
+}
+
+say sprintf "%s tests found", scalar keys %tests;
+plan(tests => 2 * scalar keys %tests);
+
+my $binary = $ARGV[1] or die "Binary file was expected";
+
+use Guard;
+
+sub testit {
+	my ($name, $test) = @_;
+
+	my $output = "$$.$name.output";
+	my $status = system("$binary < $dirname/$name.input > $output");
+	
+	my $stdout = do { local $/; open my $f, '<', "$output" or die "Error while openning output: $! $@"; <$f> };
+	unlink $output;
+
+	$status, $stdout;
+}
+
+sub diffit {
+	my ($got, $expected, $test) = @_;
+
+	sub canonicalize {
+		$_[0] =~ s/^\s*//gsi;
+		$_[0] =~ s/\s*$//gsi;
+		return "\n".$_[0];
+	}
+	is (canonicalize($got), canonicalize $expected, $test);
+}
+
+use Test::Most;
+bail_on_fail;
+
+for my $testname (sort keys %tests) {
+	subtest $testname => sub {
+		my ($status, $stdout) = testit $testname, $tests{$testname};
+		is ($status, 0, "Exited normally");
+		diffit ($stdout, $tests{$testname}{output});
+	};
+}
+
+done_testing;

@@ -1,0 +1,10 @@
+@start
+        gen = @start%x 
+        kill = @loop%x 
+@loop
+        gen = @loop%x @loop%cond 
+        kill = @start%x 
+@end
+        gen = @end%t 
+        kill = 
+

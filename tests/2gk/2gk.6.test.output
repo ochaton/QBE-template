@@ -1,0 +1,31 @@
+@l0
+        gen = @l0%t0 @l0%t1 @l0%Q @l0%t @l0%x @l0%y 
+        kill = 
+@l1
+        gen = @l1%t5 @l1%t6 @l1%t4 
+        kill = 
+@l2
+        gen = 
+        kill = 
+@l4
+        gen = @l4%t10 @l4%t11 @l4%t9 
+        kill = 
+@l5
+        gen = @l5%t16 @l5%t17 @l5%t18 @l5%t19 @l5%t15 @l5%t14 @l5%t20 @l5%t21 @l5%t22 @l5%t13 @l5%t12 
+        kill = 
+@l7
+        gen = @l7%t23 
+        kill = 
+@l8
+        gen = @l8%t25 
+        kill = 
+@l9
+        gen = @l9%t28 @l9%t27 
+        kill = 
+@l6
+        gen = @l6%t29 @l6%t32 @l6%t31 
+        kill = 
+@l3
+        gen = @l3%t33 
+        kill = 
+

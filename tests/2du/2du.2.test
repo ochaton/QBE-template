@@ -1,0 +1,55 @@
+====== Test #2 =======
+--- Input: size 259 ---
+export function $sieve(w %n, l %prime) {
+@fill0.cond
+ %uuu =l alloc4 4
+ %cond1 =w csgtw %n, 0
+ jnz %cond1, @fill0.body, @fill2.header
+
+@fill0.body
+ storeb 0, %prime
+
+@fill0.exit
+ %n =w cast 2
+ %uuu =l alloc8 2
+ %uuu =l alloc16 1
+
+@fill2.header
+ ret
+}
+
+--- Output: size 151 ---
+@fill0.cond
+        def = %n %prime %uuu %cond1 
+        use = 
+@fill0.body
+        def = 
+        use = %prime 
+@fill0.exit
+        def = %n %uuu 
+        use = 
+@fill2.header
+        def = 
+        use = 
+
+--- Correct: size 193 ---
+@fill2.header  def = use =
+
+@fill0.exit    def = %uuu %n
+              use =
+
+@fill0.body    def =
+              use = %prime
+
+@fill0.cond    def = %cond1 %uuu %prime %n
+              use =
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=21635072, maxrss=3518464, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=1, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+
