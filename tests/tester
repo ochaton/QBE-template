@@ -11,7 +11,6 @@ my %testdirs = map { $_ => 1 } qw (2gk 2rd 2du 2lv);
 
 sub test {
 	my ($dirname, $binary) = @_;
-	use DDP; p @_;
 
 	unless (-d $dirname) {
 		die "Directory for test $dirname not found"
@@ -32,9 +31,8 @@ sub test {
 	}
 
 	say sprintf "%s tests found", scalar keys %tests;
-	# plan(tests => 2 * scalar keys %tests);
 
-	sub testit {
+	sub runit {
 		my ($name, $test) = @_;
 
 		my $output = "$$.$name.output";
@@ -44,43 +42,41 @@ sub test {
 		$status, $stdout, $output;
 	}
 
-	sub diffit {
+	sub testit {
 		my (%args) = @_;
 
-		sub canonicalize {
-			$_[0] =~ s/^\s*//gsi;
-			$_[0] =~ s/\s*$//gsi;
-			$_[0] =~ s/\s{2,}/	/gsi;
-			$_[0] =~ s/\t+/\t/gsi;
-			return "\n".$_[0];
-		}
-		my $cg = canonicalize $args{got};
-		my $ce = canonicalize $args{expected};
-		if ($cg ne $ce) {
-			my $diff_file = $$.$args{testname}.'.diff';
-			system sprintf "diff -c5 %s %s > %s", $args{stdout}, $args{expected_file}, $diff_file;
-			diag(sprintf "!!!!!! Look at %s !!!!!!!!", $diff_file);
-			fail($args{testname});
-		} else {
+		my $cg = $args{canonicalize}->($args{got});
+		my $ce = $args{canonicalize}->($args{expected});
+
+		my $diff_file = $$.'.'.$args{testname}.'.diff';
+		system sprintf "diff -c5 %s %s > %s", $args{stdout}, $args{expected_file}, $diff_file;
+
+		is_deeply($cg, $ce, $args{testname}) and do {
+			unlink $diff_file;
 			unlink $args{stdout};
-			ok($args{testname});
-		}
+			return 1;
+		} or do {
+			diag(sprintf "!!!!!! Look at %s !!!!!!!!", $diff_file);
+			return 0;
+		};
 	}
 
-	use Test::Most;
-	bail_on_fail;
+	my $canonicalizer = eval { require "$dirname.pl" } or do {
+		die "Cannot open $dirname.pl: $@";
+	};
 
 	for my $testname (sort keys %tests) {
 		subtest $testname => sub {
-			my ($status, $stdout, $output) = testit $testname, $tests{$testname};
+			my ($status, $stdout, $output) = runit $testname, $tests{$testname};
 			is ($status, 0, "Exited normally");
-			diffit(
+			testit(
 				stdout   => $output,
 				expected => $tests{$testname}{output},
 				testname => $testname,
 				got      => $stdout,
-				expected_file => $dirname .'/'. $testname . '.output'
-			);
+				expected_file => $dirname .'/'. $testname . '.output',
+				canonicalize => $canonicalizer,
+			) or BAIL_OUT("Broken test $testname");
 		};
 	}
 
