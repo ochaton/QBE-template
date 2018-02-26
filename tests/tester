@@ -5,87 +5,111 @@ use warnings;
 
 no warnings 'uninitialized';
 use Test::More;
+use FindBin;
 
 my %testdirs = map { $_ => 1 } qw (2gk 2rd 2du 2lv);
 
-my $dirname = $ARGV[0];
-unless ($testdirs{ $dirname }) {
-	die "Test $dirname not found";
-}
+sub test {
+	my ($dirname, $binary) = @_;
+	use DDP; p @_;
 
-unless (-d $dirname) {
-	die "Directory for test $dirname not found"
-}
-
-my %tests;
-
-opendir my $testdir, $dirname or die "Couldn't open directory $dirname with tests: $! $@";
-while (readdir $testdir) {
-	next unless /(input|output)$/;
-
-	my ($testname, $type) = $_ =~ m/(^.+)\.(input|output)$/;
-	$tests{ $testname }{ $type } = do { local $/; open my $fh, '<', "$dirname/$_"; <$fh> or die "$dirname/$_: $! $@" };
-}
-
-for my $testname (keys %tests) {
-	@{$tests{$testname}}{qw(input output)} or die "Test $testname is broken: input or output file is missing";
-}
-
-say sprintf "%s tests found", scalar keys %tests;
-# plan(tests => 2 * scalar keys %tests);
-
-my $binary = $ARGV[1] or die "Binary file was expected";
-
-use Guard;
-
-sub testit {
-	my ($name, $test) = @_;
-
-	my $output = "$$.$name.output";
-	my $status = system("$binary < $dirname/$name.input > $output");
-	
-	my $stdout = do { local $/; open my $f, '<', "$output" or die "Error while openning output: $! $@"; <$f> };
-	$status, $stdout, $output;
-}
-
-sub diffit {
-	my (%args) = @_;
-
-	sub canonicalize {
-		$_[0] =~ s/^\s*//gsi;
-		$_[0] =~ s/\s*$//gsi;
-		$_[0] =~ s/\s{2,}/	/gsi;
-		$_[0] =~ s/\t+/\t/gsi;
-		return "\n".$_[0];
+	unless (-d $dirname) {
+		die "Directory for test $dirname not found"
 	}
-	my $cg = canonicalize $args{got};
-	my $ce = canonicalize $args{expected};
-	if ($cg ne $ce) {
-		my $diff_file = $$.$args{testname}.'.diff';
-		system sprintf "diff -c5 %s %s > %s", $args{stdout}, $args{expected_file}, $diff_file;
-		diag(sprintf "!!!!!! Look at %s !!!!!!!!", $diff_file);
-		fail($args{testname});
-	} else {
-		unlink $args{stdout};
-		ok($args{testname});
+
+	my %tests;
+
+	opendir my $testdir, $dirname or die "Couldn't open directory $dirname with tests: $! $@";
+	while (readdir $testdir) {
+		next unless /(input|output)$/;
+
+		my ($testname, $type) = $_ =~ m/(^.+)\.(input|output)$/;
+		$tests{ $testname }{ $type } = do { local $/; open my $fh, '<', "$dirname/$_"; <$fh> or die "$dirname/$_: $! $@" };
+	}
+
+	for my $testname (keys %tests) {
+		@{$tests{$testname}}{qw(input output)} or die "Test $testname is broken: input or output file is missing";
+	}
+
+	say sprintf "%s tests found", scalar keys %tests;
+	# plan(tests => 2 * scalar keys %tests);
+
+	sub testit {
+		my ($name, $test) = @_;
+
+		my $output = "$$.$name.output";
+		my $status = system("$binary < $dirname/$name.input > $output");
+		
+		my $stdout = do { local $/; open my $f, '<', "$output" or die "Error while openning output: $! $@"; <$f> };
+		$status, $stdout, $output;
+	}
+
+	sub diffit {
+		my (%args) = @_;
+
+		sub canonicalize {
+			$_[0] =~ s/^\s*//gsi;
+			$_[0] =~ s/\s*$//gsi;
+			$_[0] =~ s/\s{2,}/	/gsi;
+			$_[0] =~ s/\t+/\t/gsi;
+			return "\n".$_[0];
+		}
+		my $cg = canonicalize $args{got};
+		my $ce = canonicalize $args{expected};
+		if ($cg ne $ce) {
+			my $diff_file = $$.$args{testname}.'.diff';
+			system sprintf "diff -c5 %s %s > %s", $args{stdout}, $args{expected_file}, $diff_file;
+			diag(sprintf "!!!!!! Look at %s !!!!!!!!", $diff_file);
+			fail($args{testname});
+		} else {
+			unlink $args{stdout};
+			ok($args{testname});
+		}
+	}
+
+	use Test::Most;
+	bail_on_fail;
+
+	for my $testname (sort keys %tests) {
+		subtest $testname => sub {
+			my ($status, $stdout, $output) = testit $testname, $tests{$testname};
+			is ($status, 0, "Exited normally");
+			diffit(
+				stdout   => $output,
+				expected => $tests{$testname}{output},
+				testname => $testname,
+				got      => $stdout,
+				expected_file => $dirname .'/'. $testname . '.output'
+			);
+		};
+	}
+
+	done_testing;
+}
+
+if ($testdirs{ $ARGV[0] }) {
+	my $dirname = $ARGV[0];
+	my ($binary) = grep { m/$ARGV[0]/ } splice @ARGV, 1;
+
+	die "Binary for $dirname is required" unless $binary;
+	test($FindBin::Bin .'/' .$dirname, $binary);
+} else {
+	my (@binary, @dirs);
+	for (@ARGV) {
+		my ($tname) = $_ =~ m{([^/]+)$};
+		if ($testdirs{ $tname }) {		
+			push @binary, $_;
+			push @dirs, $tname;
+		}
+	}
+	for my $binary (@binary) {
+		eval {
+			test($FindBin::Bin .'/' . shift @dirs, $binary); 1;
+		} or do {
+			warn "Test for $binary failed: $@";
+		};
 	}
 }
 
-use Test::Most;
-bail_on_fail;
 
-for my $testname (sort keys %tests) {
-	subtest $testname => sub {
-		my ($status, $stdout, $output) = testit $testname, $tests{$testname};
-		is ($status, 0, "Exited normally");
-		diffit(
-			stdout   => $output,
-			expected => $tests{$testname}{output},
-			testname => $testname,
-			got      => $stdout,
-			expected_file => $dirname .'/'. $testname . '.output'
-		);
-	};
-}
 
-done_testing;

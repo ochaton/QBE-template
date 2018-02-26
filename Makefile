@@ -40,7 +40,14 @@ clean:
 	@rm -rvf $(BIN_DIR) $(OBJ_DIR) $(INCLUDE_DIR)
 	rm directories
 
+ifeq (check,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
+  CHECK_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(CHECK_ARGS):;@:)
+endif
+
 check: $(TARGET)
-	cd tests && for f in $^; do ./tester $$(sed 's/.*\///' <<< "$$f") $(abspath $$f); done;
+	cd tests && ./tester $(CHECK_ARGS) $(abspath $^);
 
 .PHONY: clean all

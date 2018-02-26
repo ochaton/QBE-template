@@ -1,0 +1,50 @@
+====== Test #16 =======
+--- Input: size 382 ---
+export function w $f(w %n, w %m) {
+@start
+	%a =w mul %n, %m
+	%b =w sub %n, %m
+	%cmp1 =w csgtw %n, 0
+	jnz %cmp1, @np, @nn
+@np
+	%cmp2 =w csgtw %m, 0
+	jnz %cmp2, @positive, @np_mn
+@positive
+	%a =w add %a, 4
+	jmp @ret
+
+@np_mn
+	%a =w add %a, %b
+	jmp @ret
+
+@nn
+	%n =w add %n, %b
+	jmp @positive
+
+@ret
+	ret %a
+}
+--- Output: size 190 ---
+@start
+	def = %n %m %a %b %cmp1 
+	use = 
+
+@np
+	def = %cmp2 
+	use = %m 
+
+@positive
+	def = %a 
+	use = %a 
+
+@np_mn
+	def = %a 
+	use = %a %b 
+
+@nn
+	def = %n 
+	use = %n %b 
+
+@ret
+	def = 
+	use = %a
