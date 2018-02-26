@@ -33,7 +33,7 @@ sub test {
 	say sprintf "%s tests found", scalar keys %tests;
 
 	sub runit {
-		my ($name, $test) = @_;
+		my ($name, $test, $binary, $dirname) = @_;
 
 		my $output = "$$.$name.output";
 		my $status = system("$binary < $dirname/$name.input > $output");
@@ -67,7 +67,7 @@ sub test {
 
 	for my $testname (sort keys %tests) {
 		subtest $testname => sub {
-			my ($status, $stdout, $output) = runit $testname, $tests{$testname};
+			my ($status, $stdout, $output) = runit $testname, $tests{$testname}, $binary, $dirname;
 			is ($status, 0, "Exited normally");
 			testit(
 				stdout   => $output,
@@ -79,8 +79,6 @@ sub test {
 			) or BAIL_OUT("Broken test $testname");
 		};
 	}
-
-	done_testing;
 }
 
 if ($testdirs{ $ARGV[0] }) {
@@ -90,22 +88,21 @@ if ($testdirs{ $ARGV[0] }) {
 	die "Binary for $dirname is required" unless $binary;
 	test($FindBin::Bin .'/' .$dirname, $binary);
 } else {
-	my (@binary, @dirs);
+	my (@binary, %dirs);
 	for (@ARGV) {
 		my ($tname) = $_ =~ m{([^/]+)$};
 		if ($testdirs{ $tname }) {		
 			push @binary, $_;
-			push @dirs, $tname;
+			$dirs{ $_ } = $tname;
 		}
 	}
 	for my $binary (@binary) {
 		eval {
-			test($FindBin::Bin .'/' . shift @dirs, $binary); 1;
+			test($FindBin::Bin .'/' . $dirs{ $binary }, $binary); 1;
 		} or do {
 			warn "Test for $binary failed: $@";
 		};
 	}
 }
 
-
-
+done_testing;
