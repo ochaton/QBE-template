@@ -50,4 +50,8 @@ endif
 check: $(TARGET)
 	cd tests && ./tester $(CHECK_ARGS) $(abspath $^);
 
-.PHONY: clean all
+realclean: clean
+	@rm -rv tests/*.{output,diff}
+	make -C $(QBEROOT) clean
+
+.PHONY: clean all realclean
