@@ -1,5 +1,5 @@
-my $block_match = qr/(?<label>@\S+)\n(?<block>[^@]+)/;
-my $rd_in_match = qr/rd_in\s*=(?<vars>\s*(?:\s+(%\S+))+)?/;
+my $block_match = qr/(?<label>@\S+)\n(?<block>[^\n]+)\n/;
+my $rd_in_match = qr/rd_in\s*=(?<vars>\s*(?:\s+(?:@\S+%\S+))+)?/;
 
 use Exporter;
 our @EXPORT_OK = our @EXPORT = qw(canonicalize);
