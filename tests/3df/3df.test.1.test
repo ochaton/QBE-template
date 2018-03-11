@@ -1,0 +1,33 @@
+====== Test #1 =======
+--- Input: size 180 ---
+function w $main() {
+@start
+    %x =w copy 5
+@loop
+    %x =w mul %x, %x
+    %cond =w csgew %x, 200
+    jnz %cond, @end, @loop
+@end
+    %t =w call $printf(l $fmt, w %x)
+    ret 0
+}
+
+--- Output: size 30 ---
+@start:	
+@loop:	@loop 
+@end:	
+
+--- Correct: size 30 ---
+@start:	
+@loop:	@loop 
+@end:	
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=0, ptime=0, rtime=3, maxvsz=21651456, maxrss=3313664, nvcsw=1, nivcsw=2 }
+checker: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=331776, maxrss=1744896, nvcsw=1, nivcsw=2 }
+

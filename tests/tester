@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 use Test::More;
 use FindBin;
 
-my %testdirs = map { $_ => 1 } qw (2gk 2rd 2du 2lv 3dom);
+my %testdirs = map { $_ => 1 } qw (2gk 2rd 2du 2lv 3dom 3df);
 
 sub test {
 	my ($dirname, $binary) = @_;
