@@ -1,0 +1,105 @@
+====== Test #2 =======
+--- Input: size 1000 ---
+export function $sieve(w %n, l %prime) {
+@fill0.cond
+  %cond =w csgtw %n, 0
+  jnz %cond, @fill0.body, @fill0.exit
+
+@fill0.body
+  storeb 0, %prime
+
+@fill0.exit
+  %cond =w csgtw %n, 1
+  jnz %cond, @fill1.body, @fill1.exit
+
+@fill1.body
+  %addr =l add %prime, 1
+  storeb 0, %addr
+
+@fill1.exit
+  %i =w cast 2
+
+@fill2.header
+  %cond =w csltw %i, %n
+  jnz %cond, @fill2.body, @fill2.exit
+
+@fill2.body
+  %i1 =l extsw %i
+  %addr =l add %prime, %i1
+  storeb 1, %addr
+  %i =w add %i, 1
+  jmp @fill2.header
+
+@fill2.exit
+  %i =w cast 1
+
+@outer.header
+  %i =w add %i, 1
+  %cond =w csltw %i, %n
+  jnz %cond, @outer.cond,  @outer.exit
+
+@outer.cond
+  %i1 =l extsw %i
+  %addr =l add %prime, %i1
+  %value =w loadsb %addr
+  jnz %value, @inner.preheader, @outer.header
+
+@inner.preheader
+  %j =w mul %i, %i
+
+@inner.header
+  %cond =w csltw %j, %n
+  jnz %cond, @inner.body, @outer.header
+
+@inner.body
+  %j1 =l extsw %j
+  %addr =l add %prime, %j1
+  storeb 0, %addr
+  %j =w add %j, %i
+  jmp @inner.header
+
+@outer.exit
+  ret
+}
+
+--- Output: size 1135 ---
+@fill0.cond	@fill0.cond @fill0.body @fill0.exit @fill1.body @fill1.exit @fill2.header @fill2.body @fill2.exit @outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@fill0.body	@fill0.body 
+@fill0.exit	@fill0.exit @fill1.body @fill1.exit @fill2.header @fill2.body @fill2.exit @outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@fill1.body	@fill1.body 
+@fill1.exit	@fill1.exit @fill2.header @fill2.body @fill2.exit @outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@fill2.header	@fill2.header @fill2.body @fill2.exit @outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@fill2.body	@fill2.body 
+@fill2.exit	@fill2.exit @outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@outer.header	@outer.header @outer.cond @inner.preheader @inner.header @inner.body @outer.exit 
+@outer.cond	@outer.cond @inner.preheader @inner.header @inner.body 
+@inner.preheader	@inner.preheader @inner.header @inner.body 
+@inner.header	@inner.header @inner.body 
+@inner.body	@inner.body 
+@outer.exit	@outer.exit 
+
+--- Correct: size 1135 ---
+@fill0.cond	@fill0.cond @fill0.body @fill0.exit @fill1.body @fill1.exit @fill2.header @fill2.exit @outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body @fill2.body 
+@fill0.body	@fill0.body 
+@fill0.exit	@fill0.exit @fill1.body @fill1.exit @fill2.header @fill2.exit @outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body @fill2.body 
+@fill1.body	@fill1.body 
+@fill1.exit	@fill1.exit @fill2.header @fill2.exit @outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body @fill2.body 
+@fill2.header	@fill2.header @fill2.exit @outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body @fill2.body 
+@fill2.exit	@fill2.exit @outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body 
+@outer.header	@outer.header @outer.exit @outer.cond @inner.preheader @inner.header @inner.body 
+@outer.exit	@outer.exit 
+@outer.cond	@outer.cond @inner.preheader @inner.header @inner.body 
+@inner.preheader	@inner.preheader @inner.header @inner.body 
+@inner.header	@inner.header @inner.body 
+@inner.body	@inner.body 
+@fill2.body	@fill2.body 
+
+--- Stderr: size 0 ---
+
+--- Checker output: size 3 ---
+OK
+
+--- Resource usage ---
+program: { utime=0, stime=4, ptime=4, rtime=5, maxvsz=0, maxrss=3485696, nvcsw=1, nivcsw=1 }
+checker: { utime=0, stime=0, ptime=0, rtime=2, maxvsz=0, maxrss=1744896, nvcsw=1, nivcsw=2 }
+
