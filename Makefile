@@ -19,11 +19,15 @@ OBJFILES=$(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
 TARGET=$(addprefix $(BIN_DIR)/, $(basename $(notdir $(OBJFILES))))
 
 QBEOBJFILES=$(addprefix $(QBEROOT)/obj/, util.o parse.o cfg.o)
+QBESSAOBJFILES=$(addprefix $(QBEROOT)/obj/, util.o parse.o cfg.o ssa.o live.o)
 
 all: directories qbe $(TARGET)
 
 $(TARGET): $(OBJFILES)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(wildcard $(OBJ_DIR)/$(notdir $@).o) $(QBEOBJFILES)
+
+$(BIN_DIR)/3dce: $(OBJ_DIR)/3dce.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(wildcard $(OBJ_DIR)/$(notdir $@).o) $(QBESSAOBJFILES)
 
 directories:
 	@mkdir -p $(OBJ_DIR) $(BIN_DIR) $(INCLUDE_DIR)
